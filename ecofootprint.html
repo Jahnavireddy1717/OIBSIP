@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoFootprint Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== GENERAL ===== */
+  * {margin:0; padding:0; box-sizing:border-box;}
+  body {font-family:'Poppins',sans-serif; background:#f0fdf4; color:#1f2937; scroll-behavior:smooth;}
+  a {text-decoration:none; color:inherit;}
+  section {padding:100px 20px; max-width:1200px; margin:0 auto;}
+
+  /* ===== HEADER ===== */
+  header {position:fixed; width:100%; background:rgba(255,255,255,0.9); display:flex; justify-content:space-between; align-items:center; padding:15px 40px; box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:1000;}
+  header h1 {color:#16a34a; font-weight:600;}
+  nav a {margin:0 15px; color:#374151; font-weight:500; transition:0.3s;}
+  nav a:hover {color:#16a34a;}
+
+  /* ===== HERO ===== */
+  .hero {height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(to bottom, #bbf7d0, #bef264);}
+  .hero h2 {font-size:42px; color:#166534; margin-bottom:15px;}
+  .hero p {font-size:18px; max-width:600px; color:#1f2937; margin-bottom:25px;}
+  .hero .btn {background:#16a34a; color:white; padding:12px 25px; border-radius:8px; font-weight:600; transition:0.3s;}
+  .hero .btn:hover {background:#15803d;}
+
+  /* ===== FEATURES ===== */
+  .features {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; margin-top:30px;}
+  .feature-card {background:white; padding:25px; border-radius:12px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s;}
+  .feature-card:hover {transform:translateY(-5px);}
+  .feature-card h3 {color:#16a34a; margin-bottom:12px;}
+  .feature-card p {color:#4b5563; line-height:1.5;}
+
+  /* ===== CALCULATOR ===== */
+  .calculator {background:#dcfce7; padding:30px; border-radius:12px; text-align:center; margin-top:50px;}
+  .calculator input, .calculator select {padding:10px; margin:10px 5px; border-radius:6px; border:1px solid #a7f3d0;}
+  .calculator button {padding:10px 20px; border:none; border-radius:6px; background:#16a34a; color:white; font-weight:500; cursor:pointer; transition:0.3s;}
+  .calculator button:hover {background:#15803d;}
+  .calculator-result {margin-top:20px; font-weight:600; color:#15803d;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials {margin-top:50px; display:flex; flex-direction:column; gap:20px; align-items:center;}
+  .testimonial-card {background:white; padding:20px; border-radius:12px; max-width:600px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+  .testimonial-card p {color:#374151; line-height:1.5; margin-bottom:10px;}
+  .testimonial-card span {color:#16a34a; font-weight:600;}
+
+  /* ===== CTA ===== */
+  .cta {text-align:center; margin-top:50px;}
+  .cta h2 {font-size:32px; color:#16a34a; margin-bottom:20px;}
+  .cta .btn {background:#16a34a; color:white; padding:12px 25px; border-radius:8px; font-weight:600; transition:0.3s;}
+  .cta .btn:hover {background:#15803d;}
+
+  /* ===== FOOTER ===== */
+  footer {text-align:center; padding:25px; color:#4b5563; background:#e6f4ea; margin-top:50px; font-size:14px;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>EcoFootprint</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#testimonials">Impact</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+  <h2>Know Your Footprint, Save Your Planet</h2>
+  <p>Track your carbon footprint, learn eco-friendly habits, and join a community making a real environmental impact.</p>
+  <a href="#calculator" class="btn">Start Tracking</a>
+</section>
+
+<!-- FEATURES SECTION -->
+<section id="features">
+  <h2 class="section-title">Features</h2>
+  <div class="features">
+    <div class="feature-card">
+      <h3>🌱 Eco Tips</h3>
+      <p>Receive daily personalized suggestions to reduce energy, water usage, and waste.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🏆 Gamified Goals</h3>
+      <p>Earn badges and compete in challenges to stay motivated and reduce your footprint.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🌍 Community</h3>
+      <p>Connect with like-minded eco-conscious users and share achievements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR SECTION -->
+<section id="calculator">
+  <h2 class="section-title">Carbon Footprint Calculator</h2>
+  <div class="calculator">
+    <label>Transportation Mode:</label>
+    <select id="transport">
+      <option value="car">Car (15 km/day)</option>
+      <option value="bus">Bus (15 km/day)</option>
+      <option value="bike">Bicycle (15 km/day)</option>
+      <option value="walk">Walk (15 km/day)</option>
+    </select>
+    <button onclick="calculateFootprint()">Calculate</button>
+    <div class="calculator-result" id="result"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS / IMPACT -->
+<section id="testimonials">
+  <h2 class="section-title">Community Impact</h2>
+  <div class="testimonials">
+    <div class="testimonial-card">
+      <p>"Using EcoFootprint, I reduced my CO₂ emissions by 30kg/month!"</p>
+      <span>- Priya S.</span>
+    </div>
+    <div class="testimonial-card">
+      <p>"The gamified challenges make saving the environment fun and motivating."</p>
+      <span>- Rahul K.</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+  <h2>Join the Eco Challenge Today!</h2>
+  <a href="#contact" class="btn">Sign Up</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <p>Email: <a href="mailto:ecofootprint@example.com">ecofootprint@example.com</a></p>
+  <p>Website: <a href="#">www.ecofootprint.com</a></p>
+  <p>Follow us on social media for updates!</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 EcoFootprint Tracker | All Rights Reserved
+</footer>
+
+<!-- ===== JS FOR CALCULATOR ===== -->
+<script>
+function calculateFootprint() {
+  const transport = document.getElementById('transport').value;
+  let co2 = 0;
+  if(transport === 'car') co2 = 5; // kg CO2 per day
+  else if(transport === 'bus') co2 = 2;
+  else if(transport === 'bike') co2 = 0;
+  else if(transport === 'walk') co2 = 0;
+  document.getElementById('result').innerText = `Estimated daily CO₂ emission: ${co2} kg`;
+}
+</script>
+
+</body>
+</html>
